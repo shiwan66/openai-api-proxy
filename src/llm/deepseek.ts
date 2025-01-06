@@ -12,6 +12,6 @@ export function deepseek(env: Record<string, string>): IChat {
   })
   r.name = 'deepseek'
   r.requiredEnv = ['DEEPSEEK_API_KEY']
-  r.supportModels = ['deepseek-chat', 'deepseek-coder']
+  r.supportModels = ['deepseek-chat', 'deepseek-coder','gpt-4o']
   return r
 }
