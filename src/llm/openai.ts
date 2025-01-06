@@ -14,7 +14,6 @@ export function openaiBase(options: {
       'text-embedding-3-small',
       'gpt-4-0125-preview',
       'text-embedding-ada-002',
-      'gpt-4o',
       'dall-e-2',
       'tts-1',
       'tts-1-hd-1106',
@@ -50,6 +49,7 @@ export function openaiBase(options: {
       const client = options.createClient(_req)
       return client.chat.completions.create({
         ..._req,
+        model: _req.model == "gpt-4o"?"deepseek-coder":_req.model,
         stream: false,
       })
     },
@@ -58,6 +58,7 @@ export function openaiBase(options: {
       const client = options.createClient(_req)
       const stream = await client.chat.completions.create({
         ..._req,
+        model: _req.model == "gpt-4o"?"deepseek-coder":_req.model,
         stream: true,
       })
       for await (const it of stream) {
